@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "geportal-76c2d": {
+      "hosting": {
+        "angularfiebase-authentication": [
+          "geportal-76c2d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "geportal-76c2d"
+  }
+}

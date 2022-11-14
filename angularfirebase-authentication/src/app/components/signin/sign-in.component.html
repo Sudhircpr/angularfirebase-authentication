@@ -1,0 +1,47 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Sign In</h3>
+      <div class="formGroup">
+        <input matInput  type="text" class="formControl" placeholder="Username" #userName required>
+      </div>
+      <div class="formGroup">
+        <input matInput [type]=" hide ? 'password' : 'text'"   type="password" class="formControl" placeholder="Password" #userPassword required>
+        <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon>
+              {{hide ? 'visibility_off' : 'visibility'}}
+          </mat-icon>
+        </button>
+      </div>
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup">
+        <input mat-stroked-button  type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
+      </div>
+      <div class="formGroup">
+        <span class="or"><span class="orInner">Or</span></span>
+      </div>
+      <!-- Calling GoogleAuth Api from AuthService -->
+      <div class="formGroup">
+        <button mat-stroked-button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+          <i class="fab fa-google-plus-g"></i>
+          Log in with Google
+        </button>
+      </div>
+
+      <!-- Calling PhoneAuth Api from AuthService -->
+      <div class="formGroup">
+        <button mat-stroked-button type="button" class="btn phoneBtn redirect"  routerLink="/phone">
+            <i class="fa fa-phone"></i>
+            Log in with Phone
+        </button>
+       </div>
+      <div class="forgotPassword">
+        <span routerLink="/forgot-password">Forgot Password?</span>
+      </div>
+    </div>
+    <div class="redirectToLogin">
+      <span>Don't have an account?<span mat-raised-button (click)="openDialog('3000ms', '1500ms')" class="redirect" routerLink="/register-user"> Sign Up</span></span>
+    </div>
+  </div>
+</div>
